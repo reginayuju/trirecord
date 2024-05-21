@@ -1,9 +1,77 @@
 import React, { useState, useEffect } from "react";
+import './index.css';
+import { Table } from 'antd'
+import type { TableColumnsType } from 'antd';
 import { Image } from "antd";
 import { Carousel, Button } from 'antd';
 import A1 from "../images/S__69984357_0.jpg"
 import A2 from "../images/S__69984356_0.jpg"
 import dayjs from "dayjs";
+
+interface DataType {
+    key: React.Key;
+    比賽名稱: string;
+    日期: string;
+    跑步時間: string;
+    單車時間: string;
+    游泳時間: string;
+    description: string;
+}
+
+
+const columns: TableColumnsType<DataType> = [
+    { title: '比賽名稱', dataIndex: 'name', key: 'name' },
+    Table.EXPAND_COLUMN,
+    { title: '日期', dataIndex: 'age', key: 'age' },
+    Table.SELECTION_COLUMN,
+    { title: '跑步時間', dataIndex: 'address', key: 'address' },
+    Table.SELECTION_COLUMN,
+    { title: '單車時間', dataIndex: 'address', key: 'address' },
+    Table.SELECTION_COLUMN,
+    { title: '游泳時間', dataIndex: 'address', key: 'address' },
+];
+
+const data: DataType[] = [
+    {
+        key: 1,
+        比賽名稱: '2024台東三鐵',
+        日期: '2024-04-28',
+        跑步時間: '1:14:00',
+        單車時間: '00:00:00',
+        游泳時間: '00:00:00',
+        description: '00:00:00',
+
+    },
+    {
+        key: 2,
+        比賽名稱: '2024台東三鐵',
+        日期: '2024-04-28',
+        跑步時間: '1:14:00',
+        單車時間: '00:00:00',
+        游泳時間: '00:00:00',
+        description: '00:00:00',
+    },
+    {
+        key: 3,
+        比賽名稱: '2024台東三鐵',
+        日期: '2024-04-28',
+        跑步時間: '1:14:00',
+        單車時間: '00:00:00',
+        游泳時間: '00:00:00',
+        description: '00:00:00',
+    },
+];
+
+const App: React.FC = () => (
+    <Table
+        columns={columns}
+        rowSelection={{}}
+        expandable={{
+            expandedRowRender: (record) => <p style={{ margin: 0 }}>{record.description}</p>,
+        }}
+        dataSource={data}
+    />
+);
 
 const Instruct = () => {
 
@@ -84,7 +152,7 @@ const Instruct = () => {
             {nnnn}
 
             <h1>
-                
+
                 <br />倒數計時器
             </h1>
             <p>
